@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login_Signup</title>
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <script src="./jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#signup").hide()
+            $("#btnsignup").click(function(e){
+                e.preventDefault()
+                $("#login").slideUp(1000, function(){
+                    $("#signup").slideDown(2000)
+                })
+            })
+            $("#btnlogin").click(function(e){
+                e.preventDefault()
+                $("#signup").slideUp(1000, function(){
+                    $("#login").slideDown(2000)
+                })
+            })
+            $("input[type=email]").keyup(function () {
+                var eml = $(this).val()
+                if (/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(eml))
+                    $(this).css("border", "2px solid blue")
+                else
+                    $(this).css("border", "2px solid red")
+            })
+            $("input[type=password]").keyup(function () {
+                var pas = $(this).val()
+                if (/^(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{8,}$/.test(pas))
+                    $(this).css("border", "2px solid blue")
+                else
+                    $(this).css("border", "2px solid red")
+            })
+            $("#name").keyup(function () {
+                var val = $(this).val()
+                var regex = /^[a-zA-Z\s]*$/ 
+                if (!regex.test(val)) {
+                    $(this).val(val.replace(/[^a-zA-Z\s]/g, ""))
+                    $(this).css("border", "2px solid red")
+                } else {
+                    $(this).css("border", "2px solid blue")
+                }
+            })
+            $("#lname").keyup(function () {
+                var val = $(this).val()
+                var regex = /^[a-zA-Z\s]*$/ 
+                if (!regex.test(val)) {
+                    $(this).val(val.replace(/[^a-zA-Z\s]/g, ""))
+                    $(this).css("border", "2px solid red")
+                } else {
+                    $(this).css("border", "2px solid blue")
+                }
+            })
+        })
+    </script>
+</head>
+<body style="background-color: rgb(201, 251, 201); color: white;">
+    <form action="">
+        <div class="container" style="width: 65%; margin-top: 60px;">
+            <div class="row">
+                <div id="login" class="col-5 shadow-lg" style="background-color: rgb(255, 255, 255); border-radius: 20px;">
+                    <center><img src="./image/life.png" alt="" style="width: 120px; height: 90px;"></center>
+                    <div class="form-floating" style="width: 393px; margin-top: 7px; margin-left: -14px; height: 84%; background-color: rgb(1, 97, 1); border-top-left-radius: 70px; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;" align="center">
+                        <h1 style="color: white;">Log In</h1>
+                        <div class="form-floating mb-3 px-3 form-group">
+                            <input type="email" name="" id="eml" class="form-control" placeholder="">
+                            <label for="eml" style="text-align: left; margin-left: -280px;"><b>Email Id</b></label>
+                        </div>
+                        <div class="form-floating mb-3 px-3 form-group">
+                            <input type="password" name="" id="pas" class="form-control" placeholder="">
+                            <label for="pas" style="text-align: left; margin-left: -266px;"><b>Password</b></label>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 d-flex px-5">
+                                <input type="checkbox" style="width: 15px; height: 15px; margin-top: 5px; margin-right: 2px;"><p style="margin-top: 0px; color: white;">Remeber me</p>
+                            </div>
+                            <div class="col-6">
+                                <a href="" style="margin-top: 12px; color: rgb(255, 255, 255);">Foget Password?</a>
+                            </div>
+                        <button style="margin-left: 40px; width: 340px;" class="btn btn-dark">Log In</button>
+                        </div>
+                        <center><p style="color: white;">Or Sign in with</p></center>
+                        <img src="./image/facebook.png" alt="" style="border-radius: 50%; height: 37px; width: 37px;">
+                        <img src="./image/github.png" alt="" style="border-radius: 50%; height: 37px; width: 37px;">
+                        <img src="./image/whatsapp.png" alt="" style="border-radius: 50%; height: 37px; width: 37px;">
+                        <center><p style="color: white;">Don't have an Account? <a href="" style="color: white;" id="btnsignup">Sign Up</a></p></center>
+                    </div>
+                </div>
+                <div id="signup" class="col-5 shadow-lg" style="background-color:rgb(255, 255, 255); border-radius: 20px;">
+                    <center><h1 style="margin-top: 21px; color: black;"><b>Sign Up</b></h1></center>
+                    <div style="border-top-left-radius: 50px; width: 393px; margin-top: 15px; margin-left: -15px; background-color: rgb(1, 97, 1); height: 86%; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+                        <div>
+                            <br>
+                            <div class="form-floating mb-3 px-3 form-group">
+                                <input type="text" name="" id="name" class="form-control" placeholder="">
+                                <label for="name" class="mx-2"><b>First Name</b></label>
+                            </div>
+                            <div class="form-floating mb-3 px-3 form-group">
+                                <input type="text" name="" id="lname" class="form-control" placeholder="">
+                                <label for="lname" class="mx-2"><b>Last Name</b></label>
+                            </div>
+                            <div class="form-floating mb-3 px-3 form-group">
+                                <input type="email" name="" id="eml" class="form-control" placeholder="">
+                                <label for="eml" class="mx-2"><b>Email Address</b></label>
+                            </div>
+                            <div class="form-floating mb-3 px-3 form-group">
+                                <input type="password" name="" id="psw" class="form-control" placeholder="">
+                                <label for="psw" class="mx-2"><b>Password</b></label>
+                            </div>
+                            <div class="form-floating mb-3 px-3 form-group">
+                                <input type="password" name="" id="cpsw" class="form-control" placeholder="">
+                                <label for="cpsw" class="mx-2"><b>Confirm Password</b></label>
+                            </div>
+                            <center><button class="btn btn-dark" style="width: 90%;" id="btnsignup">Sign Up</button></center>
+                            <center><p style="color: white;">Already have an Account? <a href="" style="color: white;" id="btnlogin">Login</a></p></center>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </form>
+</body>
+</html>

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vrushti Shah | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red:#E50914; --dark:#141414; --darker:#0a0a0a;
+  --card:#181818; --white:#fff; --gray:#b3b3b3; --muted:#666;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--darker);color:var(--white);font-family:'Montserrat',sans-serif;overflow-x:hidden;cursor:none;}
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-thumb{background:var(--red);}
+
+/* CURSOR */
+#cur{width:10px;height:10px;background:var(--red);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:99999;transition:width .15s,height .15s;}
+#cur2{width:34px;height:34px;border:1.5px solid rgba(229,9,20,.45);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:99998;}
+
+/* NAVBAR */
+nav{position:fixed;top:0;left:0;right:0;z-index:9000;padding:16px 56px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(180deg,rgba(0,0,0,.92) 0%,transparent 100%);transition:background .3s;}
+nav.solid{background:rgba(8,8,8,.97);box-shadow:0 1px 0 rgba(255,255,255,.06);}
+.logo{font-family:'Bebas Neue',cursive;font-size:1.9rem;color:var(--red);letter-spacing:5px;text-decoration:none;}
+.logo span{color:#fff;}
+.navlinks{display:flex;gap:28px;list-style:none;}
+.navlinks a{color:var(--gray);text-decoration:none;font-size:.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;transition:color .2s;}
+.navlinks a:hover{color:#fff;}
+
+/* HERO */
+.hero{height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 65% 40%,rgba(229,9,20,.09) 0%,transparent 55%),linear-gradient(135deg,#050505 0%,#141414 60%,#1c0404 100%);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(229,9,20,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(229,9,20,.035) 1px,transparent 1px);background-size:55px 55px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%);}
+.hero-content{position:relative;z-index:2;padding:0 80px;animation:fadeUp 1s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(50px)}to{opacity:1;transform:translateY(0)}}
+.live-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(229,9,20,.12);border:1px solid rgba(229,9,20,.35);padding:5px 16px;border-radius:2px;font-size:.65rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:24px;}
+.live-dot{width:7px;height:7px;background:var(--red);border-radius:50%;animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.hero-name{font-family:'Bebas Neue',cursive;font-size:clamp(5rem,13vw,11rem);line-height:.88;letter-spacing:3px;margin-bottom:12px;}
+.hero-name .r{color:var(--red);}
+.hero-role{font-size:.85rem;font-weight:300;letter-spacing:8px;text-transform:uppercase;color:var(--gray);margin-bottom:28px;}
+.hero-tagline{font-size:1rem;line-height:1.9;color:var(--gray);max-width:520px;font-weight:300;margin-bottom:44px;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-r{display:inline-flex;align-items:center;gap:10px;background:var(--red);color:#fff;padding:14px 30px;border-radius:2px;font-size:.8rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .15s;border:none;cursor:none;}
+.btn-r:hover{background:#ff1e2b;transform:scale(1.03);}
+.btn-w{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff;padding:14px 30px;border-radius:2px;font-size:.8rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;backdrop-filter:blur(10px);transition:background .2s;cursor:none;}
+.btn-w:hover{background:rgba(255,255,255,.16);}
+.hero-photo{position:absolute;right:80px;bottom:0;width:360px;height:480px;z-index:1;animation:photoIn 1.3s .2s ease both;}
+@keyframes photoIn{from{opacity:0;transform:translateX(70px)}to{opacity:1;transform:translateX(0)}}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:4px 4px 0 0;filter:grayscale(15%) contrast(1.05);}
+.hero-photo-fade{position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,var(--darker) 100%),linear-gradient(270deg,transparent 60%,var(--darker) 100%);border-radius:4px 4px 0 0;}
+.scroll-cue{position:absolute;bottom:36px;left:80px;display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--muted);font-size:.6rem;letter-spacing:3px;text-transform:uppercase;}
+.scroll-line{width:1px;height:50px;background:linear-gradient(180deg,var(--red),transparent);}
+
+/* INTRO SECTION */
+#intro{background:var(--dark);padding:80px 0;}
+.intro-head{padding:0 56px;margin-bottom:20px;display:flex;align-items:center;gap:16px;}
+.row-eyebrow{font-size:.65rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--red);}
+.row-title{font-family:'Bebas Neue',cursive;font-size:2.2rem;letter-spacing:2px;}
+.row-line{flex:1;height:1px;background:linear-gradient(90deg,rgba(229,9,20,.4),transparent);}
+.hint{font-size:.68rem;color:var(--muted);letter-spacing:1px;white-space:nowrap;}
+
+/* Netflix horizontal card row */
+.nf-row{display:flex;gap:6px;padding:0 56px 24px;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x mandatory;}
+.nf-row::-webkit-scrollbar{display:none;}
+.nf-card{min-width:200px;max-width:200px;height:290px;background:var(--card);border-radius:4px;overflow:hidden;position:relative;flex-shrink:0;scroll-snap-align:start;cursor:none;transition:transform .25s,box-shadow .25s,border-color .25s;border:2px solid transparent;}
+.nf-card:hover{transform:scale(1.07) translateY(-7px);box-shadow:0 24px 50px rgba(0,0,0,.75);}
+.nf-card.active{border-color:var(--red);}
+.nf-card-bg{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .5s,filter .5s;}
+.nf-card:hover .nf-card-bg{transform:scale(1.1);filter:brightness(.6);}
+.nf-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.96) 100%);}
+.nf-label{position:absolute;bottom:0;left:0;right:0;padding:20px 16px;}
+.nf-tag{font-size:.55rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:4px;}
+.nf-name{font-family:'Bebas Neue',cursive;font-size:1.35rem;letter-spacing:1px;}
+.nf-sub{font-size:.67rem;color:var(--gray);}
+/* Icon-only cards */
+.nf-icon-card{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;}
+.nf-icon-card .icon{font-size:3.6rem;margin-bottom:16px;}
+.nf-icon-card .nf-tag{position:static;padding:0;margin-bottom:6px;}
+.nf-icon-card .nf-name{position:static;font-size:1.15rem;}
+.nf-icon-card .nf-sub{position:static;margin-top:8px;}
+
+/* EXPAND PANEL */
+.ep{max-height:0;overflow:hidden;transition:max-height .75s cubic-bezier(.22,1,.36,1);background:#0f0f0f;border-top:3px solid transparent;}
+.ep.open{max-height:800px;border-top-color:var(--red);}
+.ep-inner{padding:52px 56px;display:grid;grid-template-columns:280px 1fr;gap:52px;align-items:start;}
+.ep-photo{width:280px;height:360px;border-radius:4px;object-fit:cover;object-position:top center;border:2px solid rgba(229,9,20,.2);}
+.ep-icon-big{width:280px;height:200px;display:flex;align-items:center;justify-content:center;font-size:9rem;}
+.ep-title{font-family:'Bebas Neue',cursive;font-size:3.6rem;letter-spacing:2px;line-height:1;margin-bottom:4px;}
+.ep-title .r{color:var(--red);}
+.ep-role{font-size:.75rem;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:var(--gray);margin-bottom:26px;}
+.ep-bio{font-size:.9rem;line-height:1.95;color:var(--gray);font-weight:300;margin-bottom:30px;}
+.ep-meta{display:flex;gap:28px;flex-wrap:wrap;margin-bottom:30px;}
+.meta-k{font-size:.58rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.meta-v{font-size:.85rem;font-weight:600;}
+.ep-close{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:#fff;padding:10px 22px;border-radius:2px;font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:none;transition:background .2s;}
+.ep-close:hover{background:rgba(255,255,255,.14);}
+
+/* GENERIC SECTION */
+section.sec{padding:80px 56px;}
+.sec-head{display:flex;align-items:center;gap:20px;margin-bottom:48px;}
+.sec-eyebrow{font-size:.65rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--red);}
+.sec-title{font-family:'Bebas Neue',cursive;font-size:clamp(2.4rem,4vw,3.6rem);letter-spacing:2px;}
+.sec-line{flex:1;height:1px;background:linear-gradient(90deg,rgba(229,9,20,.4),transparent);}
+
+/* SKILLS */
+#skills{background:var(--darker);}
+.sk-row{display:flex;gap:14px;overflow-x:auto;padding-bottom:12px;scroll-snap-type:x mandatory;scrollbar-width:none;}
+.sk-row::-webkit-scrollbar{display:none;}
+.sk-card{min-width:190px;background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:4px;overflow:hidden;scroll-snap-align:start;flex-shrink:0;cursor:none;transition:transform .25s,border-color .25s,box-shadow .25s;}
+.sk-card:hover{transform:scale(1.07) translateY(-8px);border-color:rgba(229,9,20,.35);box-shadow:0 20px 44px rgba(0,0,0,.6);}
+.sk-top{height:110px;display:flex;align-items:center;justify-content:center;font-size:3rem;}
+.sk-body{padding:16px 18px 20px;}
+.sk-name{font-weight:700;font-size:.88rem;margin-bottom:5px;}
+.sk-tag{font-size:.62rem;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;}
+.sk-bar{height:2px;background:rgba(255,255,255,.08);border-radius:1px;overflow:hidden;}
+.sk-fill{height:100%;background:linear-gradient(90deg,var(--red),#ff7070);width:0;transition:width 1.4s ease;}
+.bga{background:linear-gradient(135deg,#1a0808,#2a0e0e);}
+.bgb{background:linear-gradient(135deg,#0a1200,#162000);}
+.bgc{background:linear-gradient(135deg,#08080f,#10102a);}
+.bgd{background:linear-gradient(135deg,#121006,#1e1a00);}
+.bge{background:linear-gradient(135deg,#12000a,#2a0016);}
+.bgf{background:linear-gradient(135deg,#001212,#002626);}
+
+/* EDUCATION */
+#study{background:var(--dark);}
+.study-layout{display:grid;grid-template-columns:1.3fr 1fr;gap:4px;}
+.study-main{background:linear-gradient(140deg,#180a0a,#2a1010);border:1px solid rgba(229,9,20,.18);border-radius:4px;padding:52px;position:relative;overflow:hidden;}
+.study-main::after{content:'';position:absolute;width:320px;height:320px;background:radial-gradient(circle,rgba(229,9,20,.08),transparent);right:-100px;top:-100px;border-radius:50%;pointer-events:none;}
+.study-badge{display:inline-block;background:var(--red);color:#fff;font-size:.6rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;padding:5px 14px;margin-bottom:22px;}
+.study-deg{font-family:'Bebas Neue',cursive;font-size:2.8rem;letter-spacing:2px;line-height:1.1;margin-bottom:14px;}
+.study-uni{font-size:.75rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gray);margin-bottom:28px;}
+.study-yr{display:inline-flex;align-items:center;gap:8px;color:var(--red);font-size:.72rem;font-weight:700;letter-spacing:2px;}
+.study-right{display:flex;flex-direction:column;gap:4px;}
+.study-mini{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:4px;padding:22px 28px;display:flex;align-items:center;gap:18px;flex:1;cursor:none;transition:border-color .25s,transform .25s;}
+.study-mini:hover{border-color:rgba(229,9,20,.3);transform:translateX(6px);}
+.study-mini-ico{font-size:1.8rem;min-width:42px;text-align:center;}
+.study-mini-t{font-weight:700;font-size:.88rem;margin-bottom:3px;}
+.study-mini-s{font-size:.7rem;color:var(--muted);}
+
+/* HABITS */
+#habits{background:var(--darker);}
+.hab-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;}
+.hab-card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:4px;padding:36px 26px;text-align:center;cursor:none;transition:transform .25s,border-color .25s,box-shadow .25s;position:relative;overflow:hidden;}
+.hab-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(229,9,20,.05),transparent);opacity:0;transition:opacity .3s;}
+.hab-card:hover::before{opacity:1;}
+.hab-card:hover{transform:translateY(-10px);border-color:rgba(229,9,20,.28);box-shadow:0 24px 44px rgba(0,0,0,.5);}
+.hab-ico{font-size:2.6rem;margin-bottom:14px;}
+.hab-name{font-weight:700;font-size:.9rem;margin-bottom:6px;}
+.hab-desc{font-size:.73rem;color:var(--muted);line-height:1.6;}
+.span2{grid-column:span 2;}
+.lang-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px;}
+.lang-chip{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid rgba(255,255,255,.08);padding:10px 22px;border-radius:2px;font-size:.75rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;transition:border-color .2s;}
+.lang-chip:hover{border-color:var(--red);}
+.lang-dot{width:7px;height:7px;background:var(--red);border-radius:50%;}
+
+/* CONTACT */
+#contact{background:var(--dark);text-align:center;position:relative;overflow:hidden;padding:80px 56px;}
+#contact::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(229,9,20,.05),transparent);pointer-events:none;}
+.contact-big{font-family:'Bebas Neue',cursive;font-size:clamp(3.5rem,9vw,7.5rem);letter-spacing:3px;line-height:1;margin-bottom:20px;}
+.contact-big .r{color:var(--red);}
+.contact-sub{font-size:.9rem;color:var(--gray);max-width:480px;margin:0 auto 56px;font-weight:300;line-height:1.9;}
+.c-cards{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:52px;position:relative;z-index:1;}
+.c-card{background:var(--card);border:1px solid rgba(255,255,255,.08);padding:28px 36px;border-radius:4px;display:flex;align-items:center;gap:18px;text-decoration:none;color:var(--white);min-width:250px;text-align:left;cursor:none;transition:transform .25s,border-color .25s,box-shadow .25s;}
+.c-card:hover{border-color:var(--red);transform:translateY(-8px);box-shadow:0 24px 48px rgba(229,9,20,.12);}
+.c-ico{width:50px;height:50px;background:rgba(229,9,20,.13);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+.c-label{font-size:.58rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
+.c-value{font-size:.88rem;font-weight:600;word-break:break-all;}
+
+/* FOOTER */
+footer{background:var(--darker);padding:28px 56px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,.04);}
+.f-logo{font-family:'Bebas Neue',cursive;font-size:1.1rem;color:var(--muted);letter-spacing:4px;}
+.f-copy{font-size:.68rem;color:var(--muted);}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .8s ease,transform .8s ease;}
+.reveal.on{opacity:1;transform:translateY(0);}
+
+/* MOBILE */
+@media(max-width:768px){
+  nav{padding:14px 20px;}
+  .navlinks{display:none;}
+  .hero-content{padding:0 24px;}
+  .hero-photo{display:none;}
+  .scroll-cue{left:24px;}
+  .intro-head,.nf-row{padding:0 20px;}
+  .ep-inner{grid-template-columns:1fr;padding:32px 20px;}
+  .ep-photo,.ep-icon-big{width:100%;}
+  section.sec{padding:64px 20px;}
+  #contact{padding:64px 20px;}
+  .study-layout{grid-template-columns:1fr;}
+  .hab-grid{grid-template-columns:1fr 1fr;}
+  .span2{grid-column:span 1;}
+  footer{padding:20px;flex-direction:column;gap:10px;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="cur2"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="logo">VS<span>.</span></a>
+  <ul class="navlinks">
+    <li><a href="#intro">Intro</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#study">Education</a></li>
+    <li><a href="#habits">Habits</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="live-badge"><div class="live-dot"></div>Open to Opportunities</div>
+    <h1 class="hero-name">VRUSHTI<br><span class="r">SHAH</span></h1>
+    <p class="hero-role">BCA Student · Developer · Creator</p>
+    <p class="hero-tagline">Passionate about software development, web technologies,<br>and data structures. Building the future — one line at a time.</p>
+    <div class="hero-btns">
+      <a href="#intro" class="btn-r">▶ &nbsp;View My Story</a>
+      <a href="#contact" class="btn-w">✉ &nbsp;Hire Me</a>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <img src="/mnt/user-data/uploads/1773131420308_image.png" alt="Vrushti Shah" onerror="this.parentElement.style.display='none'">
+    <div class="hero-photo-fade"></div>
+  </div>
+  <div class="scroll-cue"><div class="scroll-line"></div><span>Scroll</span></div>
+</div>
+
+<!-- INTRO -->
+<section id="intro">
+  <div class="intro-head reveal">
+    <div><div class="row-eyebrow">Chapter 01</div><div class="row-title">Introduction</div></div>
+    <div class="row-line"></div>
+    <span class="hint">Click any card to expand ▼</span>
+  </div>
+
+  <div class="nf-row reveal">
+    <!-- Card 0: Photo profile -->
+    <div class="nf-card" id="c0" onclick="toggleEP(0)">
+      <img class="nf-card-bg" src="/mnt/user-data/uploads/1773131420308_image.png" alt="Vrushti"
+        onerror="this.outerHTML='<div style=\'height:100%;background:linear-gradient(145deg,#1a0505,#2d1010);display:flex;align-items:center;justify-content:center;font-size:5rem;\'>VS</div>'">
+      <div class="nf-overlay"></div>
+      <div class="nf-label">
+        <div class="nf-tag">▶ &nbsp;Profile</div>
+        <div class="nf-name">Vrushti Shah</div>
+        <div class="nf-sub">BCA Student · VNSGU</div>
+      </div>
+    </div>
+    <!-- Card 1 -->
+    <div class="nf-card" id="c1" onclick="toggleEP(1)" style="background:linear-gradient(145deg,#1a0808,#2d1212);">
+      <div class="nf-icon-card"><div class="icon">💡</div><div class="nf-tag">About Me</div><div class="nf-name">Who I Am</div><div class="nf-sub">My story &amp; values</div></div>
+    </div>
+    <!-- Card 2 -->
+    <div class="nf-card" id="c2" onclick="toggleEP(2)" style="background:linear-gradient(145deg,#080a1a,#101428);">
+      <div class="nf-icon-card"><div class="icon">🎯</div><div class="nf-tag">Ambition</div><div class="nf-name">My Goals</div><div class="nf-sub">Where I'm headed</div></div>
+    </div>
+    <!-- Card 3 -->
+    <div class="nf-card" id="c3" onclick="toggleEP(3)" style="background:linear-gradient(145deg,#0a1200,#162000);">
+      <div class="nf-icon-card"><div class="icon">✨</div><div class="nf-tag">Personality</div><div class="nf-name">What Drives Me</div><div class="nf-sub">Traits &amp; passions</div></div>
+    </div>
+    <!-- Card 4 -->
+    <div class="nf-card" id="c4" onclick="toggleEP(4)" style="background:linear-gradient(145deg,#120012,#200020);">
+      <div class="nf-icon-card"><div class="icon">🌟</div><div class="nf-tag">Fun Facts</div><div class="nf-name">Extra Bits</div><div class="nf-sub">Little things about me</div></div>
+    </div>
+  </div>
+
+  <!-- EXPAND PANELS -->
+  <div class="ep" id="ep0">
+    <div class="ep-inner">
+      <img class="ep-photo" src="/mnt/user-data/uploads/1773131420308_image.png" alt="Vrushti Shah" onerror="this.style.display='none'">
+      <div>
+        <div class="ep-title">VRUSHTI <span class="r">SHAH</span></div>
+        <div class="ep-role">BCA Student · Software Enthusiast · Creator</div>
+        <p class="ep-bio">I'm a dedicated BCA student at VNSGU (Veer Narmad South Gujarat University), Surat, Gujarat. Currently in my first year (2024–ongoing), I'm building a strong foundation in software development, web technologies, and data structures.<br><br>I'm building skills in Java, Python, and C++, and actively developing my expertise in HTML &amp; CSS, AI Prompting, and Research. I combine academic learning with real-world projects and I'm always looking for ways to apply what I know to solve meaningful problems.</p>
+        <div class="ep-meta">
+          <div><div class="meta-k">Degree</div><div class="meta-v">Bachelor of Computer Application</div></div>
+          <div><div class="meta-k">University</div><div class="meta-v">VNSGU, Surat</div></div>
+          <div><div class="meta-k">Year</div><div class="meta-v">2024 – Ongoing</div></div>
+          <div><div class="meta-k">Location</div><div class="meta-v">Surat, Gujarat, India</div></div>
+        </div>
+        <div class="ep-close" onclick="closeEP(0)">✕ &nbsp;Close</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ep" id="ep1">
+    <div class="ep-inner">
+      <div class="ep-icon-big">💡</div>
+      <div>
+        <div class="ep-title">WHO <span class="r">I AM</span></div>
+        <div class="ep-role">Curious · Driven · Self-Taught</div>
+        <p class="ep-bio">At my core, I am a problem-solver who loves to understand how things work. I believe technology is a superpower — and I'm here to master it. I take pride in my ability to learn quickly, adapt to new environments, and produce high-quality work even as a self-learner.<br><br>Beyond academics, I'm someone who values creativity, curiosity, and continuous growth. Whether it's writing code, researching a topic, or capturing a perfect photo — I bring genuine passion to everything I do.</p>
+        <div class="ep-meta">
+          <div><div class="meta-k">Approach</div><div class="meta-v">Self-Driven Learner</div></div>
+          <div><div class="meta-k">Style</div><div class="meta-v">Creative &amp; Analytical</div></div>
+          <div><div class="meta-k">Strength</div><div class="meta-v">Fast Learner</div></div>
+        </div>
+        <div class="ep-close" onclick="closeEP(1)">✕ &nbsp;Close</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ep" id="ep2">
+    <div class="ep-inner">
+      <div class="ep-icon-big">🎯</div>
+      <div>
+        <div class="ep-title">MY <span class="r">GOALS</span></div>
+        <div class="ep-role">Ambitious · Forward-Thinking · Determined</div>
+        <p class="ep-bio">My dream is to work at the intersection of technology and creativity — contributing to world-class products at companies like Google, Netflix, or other industry leaders. I'm building toward a career where I can architect solutions that matter, at scale, for real people.<br><br>Short-term, I'm focused on strengthening my programming foundation, exploring full-stack development, and growing my AI &amp; prompt engineering skills. Long-term, I want to be a developer who builds things that leave a mark.</p>
+        <div class="ep-meta">
+          <div><div class="meta-k">Short-Term</div><div class="meta-v">Full-Stack Dev Skills</div></div>
+          <div><div class="meta-k">Long-Term</div><div class="meta-v">World-Class Product Builder</div></div>
+          <div><div class="meta-k">Dream Companies</div><div class="meta-v">Google · Netflix · Big Tech</div></div>
+        </div>
+        <div class="ep-close" onclick="closeEP(2)">✕ &nbsp;Close</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ep" id="ep3">
+    <div class="ep-inner">
+      <div class="ep-icon-big">✨</div>
+      <div>
+        <div class="ep-title">WHAT DRIVES <span class="r">ME</span></div>
+        <div class="ep-role">Passionate · Creative · Resilient</div>
+        <p class="ep-bio">I thrive on curiosity. When I encounter something I don't know, I don't stop until I understand it. I love the "aha!" moment that comes from figuring something out independently — that's what keeps me going.<br><br>I'm also deeply creative. Photography taught me to see the world differently — to notice light, composition, and the beauty in ordinary moments. That same perspective makes me a better developer: I think about the user experience, the design, and the "feel" of what I build.</p>
+        <div class="ep-meta">
+          <div><div class="meta-k">Superpower</div><div class="meta-v">Relentless Curiosity</div></div>
+          <div><div class="meta-k">Creative Side</div><div class="meta-v">Photography · Design Thinking</div></div>
+          <div><div class="meta-k">Work Ethic</div><div class="meta-v">Detail-Oriented &amp; Persistent</div></div>
+        </div>
+        <div class="ep-close" onclick="closeEP(3)">✕ &nbsp;Close</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ep" id="ep4">
+    <div class="ep-inner">
+      <div class="ep-icon-big">🌟</div>
+      <div>
+        <div class="ep-title">EXTRA <span class="r">BITS</span></div>
+        <div class="ep-role">The Little Things That Make Me — Me</div>
+        <p class="ep-bio">I speak three languages — English, Gujarati, and Hindi — which makes me a great communicator across diverse teams. I love hiking because it clears my mind and reminds me that the best paths are rarely the easiest ones.<br><br>I'm a puzzle enthusiast — logic games, brain teasers, sudoku — anything that makes me think laterally. And I'm genuinely excited by the future of AI. I started learning AI prompting because I believe that knowing how to communicate with AI is one of the most valuable skills of this decade.</p>
+        <div class="ep-meta">
+          <div><div class="meta-k">Languages Spoken</div><div class="meta-v">English · Gujarati · Hindi</div></div>
+          <div><div class="meta-k">Favourite Hobby</div><div class="meta-v">Hiking &amp; Photography</div></div>
+          <div><div class="meta-k">Excited About</div><div class="meta-v">AI &amp; Future Tech</div></div>
+        </div>
+        <div class="ep-close" onclick="closeEP(4)">✕ &nbsp;Close</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="sec" id="skills">
+  <div class="sec-head reveal"><div><div class="sec-eyebrow">Chapter 02</div><h2 class="sec-title">Skills</h2></div><div class="sec-line"></div></div>
+  <div class="sk-row reveal">
+    <div class="sk-card"><div class="sk-top bga">🤖</div><div class="sk-body"><div class="sk-name">AI Prompting</div><div class="sk-tag">Active · Ongoing</div><div class="sk-bar"><div class="sk-fill" data-w="82"></div></div></div></div>
+    <div class="sk-card"><div class="sk-top bgb">🔍</div><div class="sk-body"><div class="sk-name">Research</div><div class="sk-tag">Active · Ongoing</div><div class="sk-bar"><div class="sk-fill" data-w="87"></div></div></div></div>
+    <div class="sk-card"><div class="sk-top bgc">📸</div><div class="sk-body"><div class="sk-name">Photography</div><div class="sk-tag">Creative · Hobby</div><div class="sk-bar"><div class="sk-fill" data-w="78"></div></div></div></div>
+    <div class="sk-card"><div class="sk-top bgd">🌐</div><div class="sk-body"><div class="sk-name">HTML &amp; CSS</div><div class="sk-tag">Technical · Ongoing</div><div class="sk-bar"><div class="sk-fill" data-w="72"></div></div></div></div>
+    <div class="sk-card"><div class="sk-top bge">☕</div><div class="sk-body"><div class="sk-name">Java</div><div class="sk-tag">Academic · Learning</div><div class="sk-bar"><div class="sk-fill" data-w="62"></div></div></div></div>
+    <div class="sk-card"><div class="sk-top bgf">🐍</div><div class="sk-body"><div class="sk-name">Python</div><div class="sk-tag">Academic · Learning</div><div class="sk-bar"><div class="sk-fill" data-w="66"></div></div></div></div>
+    <div class="sk-card"><div class="sk-top bga">⚡</div><div class="sk-body"><div class="sk-name">C++</div><div class="sk-tag">Academic · Learning</div><div class="sk-bar"><div class="sk-fill" data-w="58"></div></div></div></div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="sec" id="study">
+  <div class="sec-head reveal"><div><div class="sec-eyebrow">Chapter 03</div><h2 class="sec-title">Education</h2></div><div class="sec-line"></div></div>
+  <div class="study-layout reveal">
+    <div class="study-main">
+      <div class="study-badge">Currently Enrolled</div>
+      <div class="study-deg">Bachelor of<br>Computer<br>Application</div>
+      <div class="study-uni">VNSGU — Veer Narmad South Gujarat University</div>
+      <div class="study-yr"><span style="width:7px;height:7px;background:var(--red);border-radius:50%;animation:blink 2s infinite;display:inline-block;"></span>2024 – Ongoing</div>
+    </div>
+    <div class="study-right">
+      <div class="study-mini"><div class="study-mini-ico">💻</div><div><div class="study-mini-t">Software Development</div><div class="study-mini-s">Core Focus Area</div></div></div>
+      <div class="study-mini"><div class="study-mini-ico">🌐</div><div><div class="study-mini-t">Web Technologies</div><div class="study-mini-s">Active Learning</div></div></div>
+      <div class="study-mini"><div class="study-mini-ico">🗂️</div><div><div class="study-mini-t">Data Structures</div><div class="study-mini-s">Academic Coursework</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HABITS -->
+<section class="sec" id="habits">
+  <div class="sec-head reveal"><div><div class="sec-eyebrow">Chapter 04</div><h2 class="sec-title">Habits &amp; Hobbies</h2></div><div class="sec-line"></div></div>
+  <div class="hab-grid reveal">
+    <div class="hab-card"><div class="hab-ico">🥾</div><div class="hab-name">Hiking</div><div class="hab-desc">Exploring trails and nature. Staying grounded through movement.</div></div>
+    <div class="hab-card"><div class="hab-ico">📸</div><div class="hab-name">Photography</div><div class="hab-desc">Capturing moments with a unique creative eye.</div></div>
+    <div class="hab-card"><div class="hab-ico">🧩</div><div class="hab-name">Puzzle Solving</div><div class="hab-desc">Sharpening logic and lateral thinking daily.</div></div>
+    <div class="hab-card"><div class="hab-ico">🗣️</div><div class="hab-name">Learning Languages</div><div class="hab-desc">Communicating across English, Gujarati &amp; Hindi.</div></div>
+    <div class="hab-card span2"><div class="hab-ico">📚</div><div class="hab-name">Self-Driven Learning</div><div class="hab-desc">Constantly picking up new skills — from AI prompting to web dev. The drive to grow never stops.</div></div>
+    <div class="hab-card span2"><div class="hab-ico">🔬</div><div class="hab-name">Research</div><div class="hab-desc">Deep-diving into technology trends and academic subjects to build well-rounded, informed perspectives.</div></div>
+  </div>
+  <div class="lang-row reveal">
+    <div class="lang-chip"><div class="lang-dot"></div>English</div>
+    <div class="lang-chip"><div class="lang-dot"></div>Gujarati</div>
+    <div class="lang-chip"><div class="lang-dot"></div>Hindi</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="reveal">
+    <div class="sec-eyebrow" style="margin-bottom:16px;">Chapter 05</div>
+    <h2 class="contact-big">LET'S<br><span class="r">CONNECT</span></h2>
+    <p class="contact-sub">Every link below is live and works instantly — call me, email me, WhatsApp me, or find me on the map.</p>
+  </div>
+  <div class="c-cards reveal">
+    <!-- CALL — tapping on mobile will dial directly -->
+    <a href="tel:+919586919971" class="c-card">
+      <div class="c-ico">📞</div>
+      <div><div class="c-label">Call Me Directly</div><div class="c-value">+91 95869 19971</div></div>
+    </a>
+    <!-- EMAIL — opens mail client with subject pre-filled -->
+    <a href="mailto:shahvrushtib3@gmail.com?subject=Portfolio%20Inquiry%20%E2%80%94%20Vrushti%20Shah&body=Hi%20Vrushti%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20love%20to%20connect!%0A%0ARegards%2C" class="c-card">
+      <div class="c-ico">✉️</div>
+      <div><div class="c-label">Email Me</div><div class="c-value">shahvrushtib3@gmail.com</div></div>
+    </a>
+    <!-- WHATSAPP -->
+    <a href="https://wa.me/919586919971?text=Hi%20Vrushti!%20I%20saw%20your%20portfolio%20and%20would%20love%20to%20connect." target="_blank" rel="noopener" class="c-card">
+      <div class="c-ico">💬</div>
+      <div><div class="c-label">WhatsApp Me</div><div class="c-value">Chat on WhatsApp</div></div>
+    </a>
+    <!-- LOCATION — opens Google Maps -->
+    <a href="https://maps.google.com/?q=Akshar+Jyot+Society,+Surat,+Gujarat,+India" target="_blank" rel="noopener" class="c-card">
+      <div class="c-ico">📍</div>
+      <div><div class="c-label">My Location</div><div class="c-value">Akshar Jyot Society,<br>Surat, Gujarat</div></div>
+    </a>
+  </div>
+  <div class="reveal">
+    <a href="mailto:shahvrushtib3@gmail.com?subject=Opportunity%20for%20Vrushti%20Shah&body=Hi%20Vrushti%2C%0A%0A" class="btn-r" style="font-size:.85rem;padding:16px 52px;">✉ &nbsp;Send Me An Email Now</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">VRUSHTI SHAH</div>
+  <div class="f-copy">© 2025 Vrushti Shah · BCA Student · Surat, Gujarat, India</div>
+</footer>
+
+<script>
+/* CURSOR */
+const cur=document.getElementById('cur'),cur2=document.getElementById('cur2');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.transform=`translate(${mx-5}px,${my-5}px)`;});
+(function loop(){rx+=(mx-rx-17)*.13;ry+=(my-ry-17)*.13;cur2.style.transform=`translate(${rx}px,${ry}px)`;requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button,.nf-card,.sk-card,.hab-card,.c-card,.study-mini,.ep-close').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='18px';cur.style.height='18px';cur2.style.width='54px';cur2.style.height='54px';});
+  el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';cur2.style.width='34px';cur2.style.height='34px';});
+});
+
+/* NAVBAR */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>60));
+
+/* REVEAL */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('on');
+      e.target.querySelectorAll('.sk-fill').forEach(b=>{b.style.width=b.dataset.w+'%';});
+    }
+  });
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+
+/* SKILL BARS */
+const skObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.querySelectorAll('.sk-fill').forEach(b=>b.style.width=b.dataset.w+'%');});
+},{threshold:.3});
+document.querySelectorAll('.sk-card').forEach(c=>skObs.observe(c));
+
+/* NETFLIX EXPAND */
+let cur_open=-1;
+function toggleEP(i){
+  if(cur_open===i){closeEP(i);return;}
+  if(cur_open!==-1)closeEP(cur_open,false);
+  cur_open=i;
+  document.getElementById('ep'+i).classList.add('open');
+  document.querySelectorAll('.nf-card').forEach((c,j)=>c.classList.toggle('active',j===i));
+  setTimeout(()=>document.getElementById('ep'+i).scrollIntoView({behavior:'smooth',block:'nearest'}),60);
+}
+function closeEP(i,reset=true){
+  document.getElementById('ep'+i).classList.remove('open');
+  document.querySelectorAll('.nf-card').forEach(c=>c.classList.remove('active'));
+  if(reset)cur_open=-1;
+}
+</script>
+</body>
+</html>
